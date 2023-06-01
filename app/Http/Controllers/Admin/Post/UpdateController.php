@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Post;
+namespace App\Http\Controllers\Admin\Post;
 
 use App\Http\Controllers\BaseController;
 use App\Http\Requests\Post\UpdateRequest;
@@ -13,6 +13,6 @@ class UpdateController extends BaseController
     {
         $data = $request->validated();
         $this->service->update($post, $data);
-        return redirect()->route('post.show', $post->id);
+        return redirect()->route('admin.post.show', $post->id);
     }
 }

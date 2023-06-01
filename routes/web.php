@@ -25,4 +25,16 @@ Route::group(['namespace' => 'Post'], function () {
     Route::patch('/posts/{post}', 'UpdateController')->name('post.update');
     Route::delete('/posts/{post}', 'DestroyController')->name('post.delete');
 });
+Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
+    Route::group(['namespace' => 'Post'], function () {
+        Route::get('/posts', 'IndexController')->name('admin.post.index');
+        Route::get('/posts/create', 'CreateController')->name('admin.post.create');
+        Route::post('/posts', 'StoreController')->name('admin.post.store');
+        Route::get('/posts/{post}', 'ShowController')->name('admin.post.show');
+        Route::get('/posts/{post}/edit', 'EditController')->name('admin.post.edit');
+        Route::patch('/posts/{post}', 'UpdateController')->name('admin.post.update');
+        Route::delete('/posts/{post}', 'DestroyController')->name('admin.post.delete');
+    });
+});
+
 Route::get('/main', 'MainController@index')->name('main.index');
