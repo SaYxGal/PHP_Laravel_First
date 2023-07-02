@@ -24,7 +24,7 @@ class UpdateRequest extends FormRequest
         return [
             'title' => 'string',
             'content' => 'string',
-            'image' => 'string',
+            'image' => 'nullable|file',
             'category_id' => 'integer',
             'tags' => 'array',
         ];

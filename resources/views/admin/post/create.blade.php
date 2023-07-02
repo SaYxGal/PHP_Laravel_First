@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 @section('content')
     <div>
-        <form action="{{route('admin.post.store')}}" method="post">
+        <form action="{{route('admin.post.store')}}" method="post" enctype="multipart/form-data">
             @csrf
             <div class="mb-3">
                 <label for="title" class="form-label">Заголовок</label>
@@ -21,13 +21,21 @@
                 @enderror
             </div>
             <div class="mb-3">
-                <label for="image" class="form-label">Изображение</label>
-                <input
-                    value="{{old('image')}}"
-                    name="image" type="text" class="form-control" id="image"/>
-                @error('image')
-                <p class="text-danger">{{$message}}</p>
-                @enderror
+                <label class="form-label">Добавить изображение</label>
+                <div class="input-group">
+                    <div class="custom-file">
+                        <input
+                            name="image" type="file" class="custom-file-input" id="image"/>
+                        <label class="custom-file-label">Выберите изображение</label>
+                        @error('image')
+                        <p class="text-danger">{{$message}}</p>
+                        @enderror
+                    </div>
+                    <div class="input-group-append">
+                        <span class="input-group-text">Загрузка</span>
+                    </div>
+                </div>
+
             </div>
             <div class="mb-3">
                 <label for="category">Категория</label>
